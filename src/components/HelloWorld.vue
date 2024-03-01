@@ -39,6 +39,17 @@ export default {
 }
 </script>
 
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+</style>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
