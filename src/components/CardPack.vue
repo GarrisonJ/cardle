@@ -37,7 +37,7 @@ export default {
         // For example, revealing cards
         this.$emit('open-animation-ended');
 
-      }, 1000); // Adjust timeout to match your CSS animation duration
+      }, 900); // Adjust timeout to match your CSS animation duration
     }
   },
 };
@@ -101,6 +101,7 @@ export default {
 
 .shake {
   animation: shake 0.5s;
+  animation-timing-function: cubic-bezier(.68,.71,1,.31)
 }
 
 @keyframes shake {

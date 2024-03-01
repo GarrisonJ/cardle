@@ -8,10 +8,10 @@ export default {
     },
     created() {
         this.intervalId = setInterval(() => {
-            let changeX = (Math.random() - 0.5) / 2;
-            let changeY = (Math.random() - 0.5) / 2;
-            this.rotationX = Math.max(-10, Math.min(10, this.rotationX+changeX));
-            this.rotationY = Math.max(-10, Math.min(10, this.rotationY+changeY));
+            let changeX = (Math.random() - 0.5) / 1.5;
+            let changeY = (Math.random() - 0.5) / 1.5;
+            this.rotationX = Math.max(-15, Math.min(15, this.rotationX+changeX));
+            this.rotationY = Math.max(-15, Math.min(15, this.rotationY+changeY));
         }, 1);
     },
     beforeDestroy() {

@@ -6,9 +6,13 @@
   <div>
     <div v-if="!selectedPack" class="packs-container">
       <div v-for="pack in packs" :key="pack.id">
-        <CardPack v-if="pack.visible" :packId="pack.id" :class="{ 'fade-out': pack.fadeOut }"
-          @click="hideOtherPacks(pack.id)" @open-animation-ended="displayCards(pack.id)" />
-      </div>
+          <CardPack
+              v-if="pack.visible"
+              :packId="pack.id"
+              :class="{ 'fade-out': pack.fadeOut }"
+              @click="hideOtherPacks(pack.id)"
+              @open-animation-ended="displayCards(pack.id)" />
+          </div>
     </div>
     <div v-if="selectedPack" class="card-container">
       <div v-for="card in selectedPack.cards" :key="card.id">
@@ -57,7 +61,7 @@ export default {
           pack.fadeOut = true;
           setTimeout(() => {
             pack.visible = false;
-          }, 500);
+          }, 200);
         }
       });
     },
