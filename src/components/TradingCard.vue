@@ -1,6 +1,8 @@
 <template>
-    <div :key="cardId" class="card" @mousemove="handleMouseMove" @mouseleave="handleMouseLeave"
-        :style="{ backgroundImage: 'url(' + imagePath + ')', transform: `rotateX(${rotationX}deg) rotateY(${rotationY}deg)` }">
+    <div :key="cardId" class="card"
+        @mousemove="handleMouseMove($event)"
+        @mouseleave="handleMouseLeave($event)"
+        :style="dynamicStyles">
     </div>
     {{ name }}
 </template>
@@ -12,9 +14,17 @@ export default {
     name: 'TradingCard',
     mixins: [card3DEffect],
     props: ['cardId', 'imagePath', 'name'],
-    data() {
-    },
-    methods: {
+    computed: {
+        dynamicStyles() {
+            let transform = `rotateX(${this.rotationX}deg) rotateY(${this.rotationY}deg)`;
+            if (this.hovering) {
+                transform += ' scale(1.10)';
+            }
+            return {
+                backgroundImage: 'url(' + this.imagePath + ')',
+                transform: transform,
+            };
+        }
     }
 };
 </script>
@@ -40,6 +50,5 @@ export default {
 
 .card:hover {
     box-shadow:4px 6px 9px 3px rgba(0, 0, 0, 0.8);
-    transform: scale(1.05);
 }
 </style>

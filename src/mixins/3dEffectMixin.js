@@ -2,24 +2,16 @@ export default {
     data() {
       return {
         rotationX: 0,
-        rotationY: 0
+        rotationY: 0,
+        hovering: false
       };
     },
     created() {
         this.intervalId = setInterval(() => {
-            let changeX = (Math.random() - 0.5); // Random value between -0.1 and 0.1
-            let changeY = (Math.random() - 0.5); // Random value between -0.1 and 0.1
-
-            // If rotationX or rotationY are too far from 0, reduce the amount added
-            if (Math.abs(this.rotationX + changeX) > 10) {
-                changeX /= 2    ;
-            }
-            if (Math.abs(this.rotationY + changeY) > 10) {
-                changeY /= 2;
-            }
-
-            this.rotationX += changeX;
-            this.rotationY += changeY;
+            let changeX = (Math.random() - 0.5) / 2;
+            let changeY = (Math.random() - 0.5) / 2;
+            this.rotationX = Math.max(-10, Math.min(10, this.rotationX+changeX));
+            this.rotationY = Math.max(-10, Math.min(10, this.rotationY+changeY));
         }, 1);
     },
     beforeDestroy() {
@@ -46,9 +38,11 @@ export default {
         this.rotationY = rotationY;
       },
       handleMouseMove(ev) {
+        this.hovering = true;
         this.card3D(ev);
       },
       handleMouseLeave() {
+        this.hovering = false;
         this.rotationX = 0;
         this.rotationY = 0;
       }
