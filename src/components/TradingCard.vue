@@ -35,6 +35,7 @@ export default {
     justify-content: center;
     position: relative;
     transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow:1px 4px 7px 1px rgba(0, 0, 0, 0.8);
 }
 
 .card:hover {

@@ -55,11 +55,11 @@ export default {
   justify-content: center;
   position: relative;
   transition: transform 0.3s, box-shadow 0.3s;
-  
+  box-shadow:1px 4px 7px 1px rgba(0, 0, 0, 0.8);
 }
 .card-pack:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-    transform: scale(1.05);
+  box-shadow:4px 6px 9px 3px rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
 }
 
 .crimps {
@@ -76,13 +76,23 @@ export default {
   );
 }
 
-.top {
+.crimps::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%; /* Adjust this to control the shadow's height */
+  box-shadow:3px 5px 5px 4px rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+.top, ::before {
   top: 0px;
   border-bottom-left-radius: 8px; /* Adjust to match the card pack's border-radius */
   border-bottom-right-radius: 8px;
 }
 
-.bottom {
+.bottom, ::before {
   bottom: 0;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
