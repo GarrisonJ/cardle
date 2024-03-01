@@ -5,6 +5,30 @@ export default {
         rotationY: 0
       };
     },
+    created() {
+        this.intervalId = setInterval(() => {
+            let changeX = (Math.random() - 0.5); // Random value between -0.1 and 0.1
+            let changeY = (Math.random() - 0.5); // Random value between -0.1 and 0.1
+
+            // If rotationX or rotationY are too far from 0, reduce the amount added
+            if (Math.abs(this.rotationX + changeX) > 10) {
+                changeX /= 2    ;
+            }
+            if (Math.abs(this.rotationY + changeY) > 10) {
+                changeY /= 2;
+            }
+
+            this.rotationX += changeX;
+            this.rotationY += changeY;
+        }, 1);
+    },
+    beforeDestroy() {
+        // Clear the interval when the component is destroyed
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+        }
+    },
     methods: {
       map(val, minA, maxA, minB, maxB) {
         return minB + ((val - minA) * (maxB - minB)) / (maxA - minA);
